@@ -1,0 +1,43 @@
+{
+  "name": "ui-review",
+  "version": "1.0.0",
+  "description": "Universal UI review plugin. Reviews any UI surface -- web, iOS, Android, web-based desktop (Electron/Tauri), design files, screenshots -- for visual quality, alignment, spacing, typography, color, responsive behavior, motion, accessibility, runtime performance, and anti-pattern detection. Seven Opus specialist agents (visual reviewer, responsive reviewer, motion reviewer, accessibility reviewer, runtime reviewer, verifier, team lead) backed by 10 self-contained reference files covering a universal review rubric, 148 catalogued anti-patterns, viewport matrices, motion heuristics, cross-platform accessibility, web/Apple/Material overlays, evidence pipelines, and design foundations. Two user-invoked skills: review-ui (standard 2-3 specialist pass) and review-ui-full (comprehensive 5-specialist + verifier team pass). Produces severity-tagged findings (CRITICAL/HIGH/MEDIUM/LOW/TASTE) with evidence citations, confidence classes, and concrete remediation. Read-only by default.",
+  "author": {
+    "name": "TheMizeGuy",
+    "url": "https://github.com/TheMizeGuy"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/TheMizeGuy/ui-review-public",
+  "keywords": [
+    "ui",
+    "ux",
+    "design",
+    "review",
+    "quality",
+    "accessibility",
+    "wcag",
+    "apca",
+    "responsive",
+    "viewport",
+    "motion",
+    "animation",
+    "performance",
+    "core-web-vitals",
+    "typography",
+    "color",
+    "layout",
+    "alignment",
+    "spacing",
+    "anti-pattern",
+    "cross-platform",
+    "web",
+    "ios",
+    "android",
+    "material",
+    "swiftui",
+    "compose",
+    "screenshot",
+    "multi-agent",
+    "opus"
+  ]
+}
