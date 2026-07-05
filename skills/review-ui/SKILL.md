@@ -10,7 +10,7 @@ allowed-tools: Bash, Read, Grep, Glob, TodoWrite, Agent
 
 # Review UI
 
-You are coordinating a UI quality review. Determine scope, gather context, dispatch 2-3 specialists, and present a merged report.
+Coordinate a UI quality review: determine scope, gather context, dispatch 2-3 specialists, and present a merged report.
 
 ## Step 1: Determine scope
 
@@ -104,38 +104,48 @@ Each agent gets a self-contained prompt with:
 
 ## Step 6: Dispatch agents in parallel
 
-Dispatch all chosen specialists in parallel using the Agent tool. Send multiple Agent calls in a single message:
+Dispatch all chosen specialists in parallel using the Agent tool. Send multiple Agent calls in a single message. Omit `model` on each call -- specialists inherit the session model (always the strongest available Claude):
 
 ```
 // Dispatch all in parallel -- one message, multiple tool calls
 Agent({
   subagent_type: "ui-review:ui-visual-reviewer",
-  model: "opus",
   prompt: "<scope, platform, context, evidence availability>",
   description: "Visual quality review"
 })
 
 Agent({
   subagent_type: "ui-review:ui-accessibility-reviewer",
-  model: "opus",
   prompt: "<scope, platform, context, evidence availability>",
   description: "Accessibility review"
 })
 
 Agent({
   subagent_type: "ui-review:ui-responsive-reviewer",
-  model: "opus",
   prompt: "<scope, platform, context, evidence availability>",
   description: "Responsive review"
 })
 ```
 
+### Execution mode
+
+Specialists inherit the session model. If the session model is already the strongest available tier and scope is small (1-2 files, one dimension), the coordinator may run the review inline in the main context instead of dispatching -- never dispatch to, or wait on, a specific named model. Dispatching stays the default for multi-specialist parallel reviews; inline execution never grants write access -- findings stay advisory and files stay unmodified, exactly as the read-only specialist agents behave.
+
 ## Step 7: Merge and present report
 
+Standard mode has no dedicated verifier agent -- the coordinator applies the verifier's rules
+during the merge:
+
 1. Collect findings from all agents
-2. Deduplicate (same element, same issue = keep more specific)
-3. Re-rank by severity (CRITICAL first)
-4. Number sequentially
+2. Deduplicate and group using the "Deduplication rules" and "Grouping" sections of
+   `${CLAUDE_PLUGIN_ROOT}/agents/ui-verifier.md` (same element + same issue = keep the more
+   specific finding; cross-dimension contrast/clipping/reduced-motion overlaps merge into one)
+3. Validate severities against the "Severity validation" table in the same file (taste never
+   at HIGH/CRITICAL; accessibility blockers never below HIGH)
+4. Enforce the geometry evidence rule (`${CLAUDE_PLUGIN_ROOT}/references/09-evidence-pipeline.md`,
+   "Geometry evidence rule"): any spatial claim without geometry evidence is capped at
+   "Possible issue -- geometry measurement needed"
+5. Re-rank by severity (CRITICAL first) and number sequentially
 
 ```
 ## UI Quality Review
@@ -150,3 +160,20 @@ Agent({
 
 [numbered findings list]
 ```
+
+### Before presenting (all must pass)
+
+| Check | Pass condition |
+|---|---|
+| Finding format | Every finding carries [SEVERITY] [CONFIDENCE] plus Surface, Issue, Why it matters, Evidence, Recommended change |
+| Evidence present | No finding with an empty or vague Evidence field ("looks off" fails) |
+| Geometry rule | No spatial claim above "Possible issue" confidence without geometry evidence |
+| Ordering | Findings numbered sequentially, CRITICAL first, TASTE last |
+| Coverage disclosure | Dimensions NOT reviewed (undispatched specialists, screenshot-only limits) named in the report header |
+
+Fix formatting failures during the merge; if a finding's substance is unverifiable, drop it
+and record the drop under a "Merge notes" line in the report.
+
+## Step 8: Write learnings
+
+If the review surfaced non-obvious patterns, write to GoodMem Learnings.

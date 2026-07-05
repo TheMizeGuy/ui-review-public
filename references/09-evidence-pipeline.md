@@ -9,6 +9,30 @@
 | Browser-assisted | Web app with Playwright available | Screenshots + DOM + traces + a11y scans | High -- full evidence pipeline |
 | Full evidence | Running app with all tooling | Everything above + video + metrics + computed styles | Highest -- verifier has maximum signal |
 
+## Geometry evidence rule (canonical)
+
+Single source of truth for every specialist and the verifier. Agent files cite this section;
+do not restate the rule elsewhere.
+
+A finding that asserts spatial or numeric precision -- alignment offsets, pixel distances,
+spacing values, target sizes, overlap or clipping amounts, layout-shift distances, contrast
+ratios -- requires geometry evidence:
+
+| Surface | Acceptable geometry evidence |
+|---|---|
+| Web | DOM bounding boxes (`getBoundingClientRect`), layout metrics, computed styles via Playwright |
+| Apple | Element frames from `XCUIElementAttributes` / hierarchy snapshots |
+| Android | Compose layout bounds / semantics-tree geometry |
+| Screenshot-only | OCR box geometry; otherwise the claim stays soft |
+
+A screenshot alone is never geometry evidence -- estimating distances from pixels is
+unreliable (documented limited model spatial reasoning). Contrast claims follow the same
+rule: computed color values plus a calculated ratio, never screenshot color sampling.
+
+Without geometry evidence, cap the claim at confidence "Possible issue -- geometry
+measurement needed". The verifier downgrades or removes any spatial claim above that cap.
+Per-claim application: "Evidence rules for findings" below.
+
 ## Artifact bundle schema
 
 Every review run should normalize artifacts into one directory:
@@ -110,6 +134,8 @@ If states cannot be provided, report says review coverage is incomplete.
 | Jank detection | Android Studio trace-based |
 
 ## Evidence rules for findings
+
+Per-claim application of the canonical geometry evidence rule above, plus non-geometry claim types:
 
 | Claim type | Minimum evidence |
 |---|---|

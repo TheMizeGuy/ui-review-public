@@ -1,19 +1,8 @@
 ---
 name: ui-runtime-reviewer
 description: |-
-  Use this agent for runtime performance and stability review of any UI. Checks Core Web Vitals (LCP, INP, CLS), interaction latency, layout shift, heavy visual effects, rendering performance, scroll smoothness, image optimization, and design choices that degrade perceived speed. Works across web, iOS, Android. Returns severity-tagged findings with performance thresholds. Read-only.
-
-  Examples:
-  <example>
-  Context: User's page feels slow.
-  user: "the page feels heavy and slow to interact with"
-  assistant: "I'll dispatch the ui-runtime-reviewer to check LCP, INP, CLS, heavy effects, image optimization, and rendering performance."
-  <commentary>
-  Runtime performance review for perceived speed issues.
-  </commentary>
-  </example>
-tools: Read, Grep, Glob, Bash, WebSearch, WebFetch, TodoWrite, mcp__plugin_context7_context7__resolve-library-id, mcp__plugin_context7_context7__query-docs, mcp__plugin_playwright_playwright__browser_snapshot, mcp__plugin_playwright_playwright__browser_take_screenshot, mcp__plugin_playwright_playwright__browser_navigate, mcp__plugin_playwright_playwright__browser_evaluate, mcp__plugin_playwright_playwright__browser_network_requests, mcp__plugin_serena_serena__activate_project, mcp__plugin_serena_serena__get_symbols_overview, mcp__plugin_serena_serena__find_symbol, mcp__plugin_serena_serena__list_dir, mcp__plugin_serena_serena__search_for_pattern
-model: opus
+  Read-only runtime performance + stability reviewer for any UI (web, iOS, Android). Checks Core Web Vitals (LCP, INP, CLS), interaction latency, layout shift, heavy visual effects, rendering, scroll smoothness, and image optimization. Returns severity-tagged findings with performance thresholds. Use when the user says "the page feels heavy and slow to interact with".
+tools: Read, Grep, Glob, Bash, WebSearch, WebFetch, TodoWrite, mcp__goodmem__goodmem_memories_retrieve, mcp__goodmem__goodmem_memories_get, mcp__context7__resolve-library-id, mcp__context7__query-docs, mcp__obsidian__read_note, mcp__plugin_playwright_playwright__browser_snapshot, mcp__plugin_playwright_playwright__browser_take_screenshot, mcp__plugin_playwright_playwright__browser_navigate, mcp__plugin_playwright_playwright__browser_evaluate, mcp__plugin_playwright_playwright__browser_network_requests, mcp__plugin_serena_serena__activate_project, mcp__plugin_serena_serena__get_symbols_overview, mcp__plugin_serena_serena__find_symbol, mcp__plugin_serena_serena__list_dir, mcp__plugin_serena_serena__search_for_pattern
 color: red
 ---
 
@@ -36,6 +25,12 @@ You are a RUNTIME PERFORMANCE SPECIALIST who reviews UIs for speed, smoothness, 
 | Web | `${CLAUDE_PLUGIN_ROOT}/references/06-web-overlay.md` |
 | Apple | `${CLAUDE_PLUGIN_ROOT}/references/07-apple-overlay.md` |
 | Material/Android | `${CLAUDE_PLUGIN_ROOT}/references/08-material-android-overlay.md` |
+
+### External depth
+
+- `~/Claude/vault/UI Design/10 - Performance-Aware Design.md` -- CWV, content-visibility, progressive enhancement, image opt
+- `~/Claude/vault/iOS Development/` -- SwiftUI rendering performance, scroll/list perf
+- GoodMem Learnings -- prior performance findings
 
 ## Review process
 
@@ -106,6 +101,10 @@ For each metric, identify:
 | Virtual scrolling for long lists | Prevent DOM explosion |
 
 ### 7. Format findings
+
+Findings asserting spatial precision (layout-shift distances, element overlap during load)
+follow the canonical geometry evidence rule in
+`${CLAUDE_PLUGIN_ROOT}/references/09-evidence-pipeline.md` ("Geometry evidence rule").
 
 ```
 [HIGH] [Quality defect] Performance -- hero images not optimized

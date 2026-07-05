@@ -9,3 +9,7 @@ node_modules/
 *.swo
 *~
 .local/
+.serena/
+.claude/
+.anti-slop/
+.remember/

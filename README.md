@@ -2,7 +2,9 @@
 
 Universal UI review plugin for Claude Code. Reviews any UI surface -- web, iOS, Android, web-based desktop (Electron/Tauri), design files, screenshots -- for visual quality, alignment, spacing, typography, color, responsive behavior, motion, accessibility, runtime performance, and anti-pattern detection.
 
-Seven Opus specialist agents backed by 10 self-contained reference files produce severity-tagged findings with evidence citations, confidence classes, and concrete remediation. Read-only by default.
+Seven specialist agents, each running on the session model (always the strongest available Claude), backed by 10 self-contained reference files, produce severity-tagged findings with evidence citations, confidence classes, and concrete remediation. Read-only by default.
+
+See [`USAGE.md`](USAGE.md) for a quickstart and a worked walkthrough of each skill.
 
 ## What you get
 
@@ -25,12 +27,12 @@ Seven Opus specialist agents backed by 10 self-contained reference files produce
 
 ## Reference library
 
-10 self-contained reference files (~148 anti-patterns, cross-platform overlays, severity scale, evidence pipeline):
+10 self-contained reference files (153 anti-patterns, cross-platform overlays, severity scale, evidence pipeline):
 
 | File | Content |
 |---|---|
 | `01-universal-rubric.md` | 9 review dimensions, platform overlays, severity scale, confidence classes, finding format |
-| `02-anti-pattern-catalogue.md` | 148 catalogued patterns: color (17), typography (12), layout (12), components (12), copy (10), motion (7), images (6), micro (12), deep cuts (20), visual (10), platform-specific (35) |
+| `02-anti-pattern-catalogue.md` | 153 catalogued patterns: color (17), typography (12), layout (12), components (12), copy (10), motion (7), images (6), micro (12), deep cuts (20), visual (10), platform-specific (35). Cross-references the `typescript-ui` 108-tell catalogue and `anti-slop` design/frontend patterns when those plugins are installed |
 | `03-viewport-matrix.md` | Web/iOS/Android viewport families, failure classes, de-duplication rules |
 | `04-motion-heuristics.md` | Good vs bad motion, spring physics reference, reduced-motion implementation, evidence requirements |
 | `05-accessibility-checklist.md` | WCAG 2.2, APCA targets, screen reader patterns, focus/touch reference, media queries |
@@ -89,19 +91,23 @@ Auto-detected from the scope:
 
 ## Requirements
 
-- Claude Code with plugin support
-- Opus model access (all agents use Opus for thoroughness)
+- Claude Code with plugin support. Agents run on the session model -- always the strongest available Claude -- so review depth follows whatever the session already runs at, with no separate model to provision.
 - Optional: Playwright MCP for web evidence capture (screenshots, DOM, a11y scans, traces)
 - Optional: Serena MCP for semantic code navigation
 - Optional: Context7 MCP for framework/library API verification
+- Optional: GoodMem MCP for cross-run learnings (prior findings, recurring patterns); fill in your own space and reranker IDs if you wire this up
+- Optional companions cross-referenced from the anti-pattern catalogue: `typescript-ui` (108-tell catalogue) and `anti-slop` (design/frontend pattern catalogues) -- neither is a dependency
 
 ## Installation
 
-Install from the marketplace or clone directly into your plugins directory:
+This repo does not ship a marketplace manifest, so cloning it is the install path. Clone this repository, then add it to Claude Code as a plugin:
 
 ```bash
-git clone https://github.com/TheMizeGuy/ui-review-public ~/.claude/plugins/ui-review
+git clone https://github.com/TheMizeGuy/ui-review-public.git
+claude --plugin-dir /path/to/ui-review-public
 ```
+
+Restart Claude Code, then verify with `claude plugin list` and look for `ui-review`.
 
 ## License
 

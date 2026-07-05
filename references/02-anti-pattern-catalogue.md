@@ -1,6 +1,17 @@
 # Anti-Pattern Catalogue
 
-Comprehensive catalogue of patterns that indicate poor execution, AI-generated output, or incomplete design. Organized by category with specific detection methods.
+Comprehensive catalogue of patterns that indicate poor execution, AI-generated output, or incomplete design. Cross-references the typescript-ui 108-tell catalogue, anti-slop design-patterns, and anti-slop frontend-patterns. Organized by category with specific detection methods.
+
+**External deep references (agents MUST read these for full coverage):**
+
+| Source | Path (if the plugin is installed) | Tells |
+|---|---|---|
+| typescript-ui anti-AI tells | `references/aesthetic/01-anti-ai-tells.md` in your `typescript-ui` plugin install (public mirror: `github.com/TheMizeGuy/typescript-ui-public`) | 108 tells with OKLCH replacements, specific CSS patterns, severity classifications |
+| typescript-ui taste checklist | `references/aesthetic/04-taste-checklist.md` in the same plugin | Pre-ship audit checklist with verification methods |
+| anti-slop design patterns | `skills/anti-slop/references/design-patterns.md` in your `anti-slop` plugin install (public: `github.com/TheMizeGuy/anti-slop`) | Visual design, CSS, functional, content anti-patterns |
+| anti-slop frontend patterns | `skills/anti-slop/references/frontend-patterns.md` in the same plugin | CSS architecture, z-index, font loading, dark mode |
+
+Both are optional companion plugins, not dependencies -- if you don't have them installed, skip these rows; the catalogue below still stands on its own. If installed via Claude Code's plugin cache, the path is version-named (e.g. `~/.claude/plugins/cache/<marketplace>/anti-slop/<version>/...`) and moves on every release -- resolve the current version at read time rather than hardcoding one.
 
 ---
 
@@ -254,4 +265,4 @@ These catch teams that overrode the obvious defaults but left fingerprints in se
 | **MEDIUM** | Untuned neutrals, glassmorphism overuse, uniform shadow, mirror dark mode, all-caps overlines, bento-as-default, padding overload, alternating L-R features, default toast |
 | **LOW** | Blur blobs, black overlay, logo marquee, stat counters, wave dividers, slow page transitions, hover-scale-everywhere |
 
-**Total catalogue: 148 patterns** (17 color + 12 typography + 12 layout + 12 component + 10 copy + 7 motion + 6 image + 12 micro + 20 deep cuts + 10 visual tells + 15 web + 10 Apple + 10 Android + top 10 ranked = 148 unique, some overlap across top-10 and categories by design)
+**Total catalogue: 153 patterns** (17 color + 12 typography + 12 layout + 12 component + 10 copy + 7 motion + 6 image + 12 micro + 20 deep cuts + 10 visual tells + 15 web + 10 Apple + 10 Android = 153 unique; the Top 10 ranked list is a cross-cutting subset that duplicates entries already counted in the categories above)

@@ -1,19 +1,8 @@
 ---
 name: ui-motion-reviewer
 description: |-
-  Use this agent for motion and animation review of any UI. Checks animation timing, purpose, interruptibility, reduced-motion support, compositor-safe property usage, spring physics, transition feel, and platform-specific motion patterns. Works across web, iOS, Android. Returns severity-tagged findings with evidence requirements. Read-only.
-
-  Examples:
-  <example>
-  Context: User's animations feel wrong.
-  user: "the animations feel sluggish and distracting"
-  assistant: "I'll dispatch the ui-motion-reviewer to audit timing, purpose, property choices, and reduced-motion support."
-  <commentary>
-  Motion quality review is this agent's core purpose.
-  </commentary>
-  </example>
-tools: Read, Grep, Glob, Bash, WebSearch, WebFetch, TodoWrite, mcp__plugin_context7_context7__resolve-library-id, mcp__plugin_context7_context7__query-docs, mcp__plugin_playwright_playwright__browser_snapshot, mcp__plugin_playwright_playwright__browser_take_screenshot, mcp__plugin_playwright_playwright__browser_navigate, mcp__plugin_playwright_playwright__browser_evaluate, mcp__plugin_serena_serena__activate_project, mcp__plugin_serena_serena__get_symbols_overview, mcp__plugin_serena_serena__find_symbol, mcp__plugin_serena_serena__list_dir, mcp__plugin_serena_serena__search_for_pattern
-model: opus
+  Read-only motion / animation reviewer for any UI (web, iOS, Android). Checks animation timing, purpose, interruptibility, reduced-motion support, compositor-safe property usage, spring physics, transition feel, and platform-specific patterns. Returns severity-tagged findings with evidence requirements. Use when the user says "the animations feel sluggish and distracting".
+tools: Read, Grep, Glob, Bash, WebSearch, WebFetch, TodoWrite, mcp__goodmem__goodmem_memories_retrieve, mcp__goodmem__goodmem_memories_get, mcp__context7__resolve-library-id, mcp__context7__query-docs, mcp__obsidian__read_note, mcp__plugin_playwright_playwright__browser_snapshot, mcp__plugin_playwright_playwright__browser_take_screenshot, mcp__plugin_playwright_playwright__browser_navigate, mcp__plugin_playwright_playwright__browser_evaluate, mcp__plugin_serena_serena__activate_project, mcp__plugin_serena_serena__get_symbols_overview, mcp__plugin_serena_serena__find_symbol, mcp__plugin_serena_serena__list_dir, mcp__plugin_serena_serena__search_for_pattern
 color: yellow
 ---
 
@@ -36,6 +25,11 @@ You are a MOTION DESIGN SPECIALIST who reviews animation, transitions, and inter
 | Web | `${CLAUDE_PLUGIN_ROOT}/references/06-web-overlay.md` |
 | Apple | `${CLAUDE_PLUGIN_ROOT}/references/07-apple-overlay.md` |
 | Material/Android | `${CLAUDE_PLUGIN_ROOT}/references/08-material-android-overlay.md` |
+
+### External depth
+
+- `~/Claude/vault/UI Design/07 - Motion Design.md` -- View Transitions, scroll-driven, spring physics, perf budgets
+- `~/Claude/vault/iOS Development/81 - SwiftUI Animation Deep Dive.md` -- Apple motion patterns
 
 ## Review process
 
@@ -92,6 +86,10 @@ Motion findings MUST be backed by evidence:
 | "Reduced motion ignored" | Code audit showing no `prefers-reduced-motion` check |
 | "Causes jank" | Layout-triggering property identification + trace if available |
 | "Delays content" | Timing analysis showing content inaccessible during animation |
+
+Spatial motion claims (overshoot into content, overlap during transition, off-screen travel)
+additionally follow the canonical geometry evidence rule in
+`${CLAUDE_PLUGIN_ROOT}/references/09-evidence-pipeline.md` ("Geometry evidence rule").
 
 ### 6. Format findings
 
