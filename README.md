@@ -100,14 +100,19 @@ Auto-detected from the scope:
 
 ## Installation
 
-This repo does not ship a marketplace manifest, so cloning it is the install path. Clone this repository, then add it to Claude Code as a plugin:
-
 ```bash
-git clone https://github.com/TheMizeGuy/ui-review-public.git
-claude --plugin-dir /path/to/ui-review-public
+# 1. Add this repo as a marketplace
+claude plugin marketplace add https://github.com/TheMizeGuy/ui-review-public.git
+
+# 2. Install the plugin
+claude plugin install ui-review@ui-review-public
+
+# 3. Restart Claude Code for the plugin to load
 ```
 
-Restart Claude Code, then verify with `claude plugin list` and look for `ui-review`.
+After restart, verify with `claude plugin list`. Updates ship through the same channel: when a new release lands, run `claude plugin marketplace update ui-review-public` then `claude plugin update ui-review@ui-review-public`, or accept the update prompt in `/plugin`.
+
+Manual alternative: `git clone https://github.com/TheMizeGuy/ui-review-public.git` and load with `claude --plugin-dir <path>`.
 
 ## License
 

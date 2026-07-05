@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ui-review-public",
+  "description": "Marketplace for the ui-review plugin for Claude Code.",
+  "owner": {
+    "name": "TheMizeGuy"
+  },
+  "plugins": [
+    {
+      "name": "ui-review",
+      "description": "Universal UI review plugin. Reviews any UI surface -- web, iOS, Android, web-based desktop (Electron/Tauri), design files, screenshots -- for visual quality, alignment, spacing, typography, color, responsive behavior, motion, accessibility, runtime performance, and anti-pattern detection. Seven specialist agents (visual reviewer, responsive reviewer, motion reviewer, accessibility reviewer, runtime reviewer, verifier, team lead), each running on the session model -- always the strongest available Claude -- backed by 10 self-contained reference files covering a universal review rubric, 153 catalogued anti-patterns (plus cross-references to the typescript-ui 108-tell and anti-slop catalogues), viewport matrices, motion heuristics, cross-platform accessibility, web/Apple/Material overlays, evidence pipelines, and design foundations. Two user-invoked skills: review-ui (standard 2-3 specialist pass) and review-ui-full (comprehensive 5-specialist + verifier team pass). Produces severity-tagged findings (CRITICAL/HIGH/MEDIUM/LOW/TASTE) with evidence citations, confidence classes, and concrete remediation. Read-only by default.",
+      "source": "./",
+      "version": "1.0.1",
+      "category": "ui-design",
+      "homepage": "https://github.com/TheMizeGuy/ui-review-public"
+    }
+  ]
+}
