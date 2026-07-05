@@ -59,9 +59,9 @@ ui-review/
 
 | Source | What it provides |
 |---|---|
-| `~/Claude/vault/UI Design/` (12 files) | Deep reference on design principles, typography, color, layout, motion, accessibility, performance, mobile, trends |
-| `~/Claude/vault/iOS Development/` (88 files) | Apple platform depth: HIG, SwiftUI, accessibility, animation |
-| `~/Claude/vault/Claude Code UI Review Plugin/` (10 files) | Research vault that informed this plugin's design |
+| Your own design reference vault, if you keep one | Deep reference on design principles, typography, color, layout, motion, accessibility, performance, mobile, trends |
+| Your own iOS/Apple platform reference vault, if you keep one | Apple platform depth: HIG, SwiftUI, accessibility, animation |
+| Author's research notes | Background research that informed this plugin's design (not published) |
 | GoodMem Learnings | Prior review findings, debug learnings, API gotchas |
 | Context7 | Current framework/library API docs |
 | Playwright MCP | Browser automation for web evidence capture |

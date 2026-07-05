@@ -28,8 +28,7 @@ You are a RESPONSIVE DESIGN SPECIALIST who reviews UIs across viewport sizes, or
 
 ### External depth
 
-- `~/Claude/vault/UI Design/06 - Layout Systems.md` -- Grid, Subgrid, container queries, fluid spacing
-- `~/Claude/vault/UI Design/11 - Mobile-First Patterns.md` -- thumb zones, safe areas, viewport units
+- Your own design reference vault, if you keep one -- Grid, Subgrid, container queries, fluid spacing, thumb zones, safe areas, viewport units
 
 ## Review process
 

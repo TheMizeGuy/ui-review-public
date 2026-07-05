@@ -42,7 +42,7 @@ If installed via Claude Code's plugin cache, the path is version-named (e.g. `~/
 
 ### External depth
 
-- `~/Claude/vault/UI Design/` -- deep reference for design principles, typography, color, layout, motion
+- Your own design reference vault, if you keep one (e.g. via Obsidian) -- deep reference for design principles, typography, color, layout, motion
 - GoodMem Learnings (`<your-goodmem-learnings-space-id>`) -- prior reviews and learnings
 - Context7 -- verify framework/library API behavior
 

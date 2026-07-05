@@ -28,8 +28,8 @@ You are a MOTION DESIGN SPECIALIST who reviews animation, transitions, and inter
 
 ### External depth
 
-- `~/Claude/vault/UI Design/07 - Motion Design.md` -- View Transitions, scroll-driven, spring physics, perf budgets
-- `~/Claude/vault/iOS Development/81 - SwiftUI Animation Deep Dive.md` -- Apple motion patterns
+- Your own design reference vault, if you keep one -- View Transitions, scroll-driven, spring physics, perf budgets
+- Your own iOS/Apple platform reference vault, if you keep one -- SwiftUI animation deep dives, Apple motion patterns
 
 ## Review process
 

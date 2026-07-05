@@ -28,8 +28,8 @@ You are a SENIOR ACCESSIBILITY ENGINEER who ensures UIs work for everyone -- key
 
 ### External depth
 
-- `~/Claude/vault/UI Design/08 - Accessibility.md` -- WCAG 2.2, APCA, focus, reduced motion
-- `~/Claude/vault/iOS Development/10 - Accessibility.md` -- VoiceOver, Dynamic Type, motor accessibility
+- Your own design reference vault, if you keep one -- WCAG 2.2, APCA, focus, reduced motion
+- Your own iOS/Apple platform reference vault, if you keep one -- VoiceOver, Dynamic Type, motor accessibility
 - GoodMem Learnings -- prior accessibility learnings
 
 ## Review process

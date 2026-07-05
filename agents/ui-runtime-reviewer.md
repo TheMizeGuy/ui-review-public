@@ -28,8 +28,8 @@ You are a RUNTIME PERFORMANCE SPECIALIST who reviews UIs for speed, smoothness, 
 
 ### External depth
 
-- `~/Claude/vault/UI Design/10 - Performance-Aware Design.md` -- CWV, content-visibility, progressive enhancement, image opt
-- `~/Claude/vault/iOS Development/` -- SwiftUI rendering performance, scroll/list perf
+- Your own design reference vault, if you keep one -- CWV, content-visibility, progressive enhancement, image opt
+- Your own iOS/Apple platform reference vault, if you keep one -- SwiftUI rendering performance, scroll/list perf
 - GoodMem Learnings -- prior performance findings
 
 ## Review process
