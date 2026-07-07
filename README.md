@@ -1,5 +1,8 @@
 # ui-review
 
+> **DEPRECATED (2026-07-07):** superseded by the consolidated `ui-craft` plugin, which merges this plugin's content with its sibling UI plugin into one UI engineering team. This repo is retained for history; no further releases.
+
+
 Universal UI review plugin for Claude Code. Reviews any UI surface -- web, iOS, Android, web-based desktop (Electron/Tauri), design files, screenshots -- for visual quality, alignment, spacing, typography, color, responsive behavior, motion, accessibility, runtime performance, and anti-pattern detection.
 
 Seven specialist agents, each running on the session model (always the strongest available Claude), backed by 10 self-contained reference files, produce severity-tagged findings with evidence citations, confidence classes, and concrete remediation. Read-only by default.
